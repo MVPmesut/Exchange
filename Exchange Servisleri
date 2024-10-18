@@ -1,0 +1,41 @@
+Exchange Server Az bilinen kavramları
+
+Exchange Servisleri
+SERVİS ADI	AÇIKLAMA
+Microsoft Exchange Search Host Controller	
+Exchange sunucusunda arama işlevselliğini yöneten bir hizmettir. Arama sorgularını işler ve kullanıcılara hızlı ve doğru sonuçlar sağlar.
+Microsoft Exchange Compliance Audit	
+Exchange sunucusunda uyumluluk denetimlerini sağlayan bir hizmettir. İletileri izler, kaydeder ve uyumluluk raporları oluşturur.
+Microsoft Exchange Active Directory Topology	
+Exchange sunucusunun Active Directory yapılandırmasını yöneten bir hizmettir. Exchange sunucularının doğru şekilde yapılandırılmasını sağlar.
+Microsoft Exchange Anti-spam Update	Exchange sunucusunun anti-spam filtrelemesini güncelleyen bir hizmettir. Spam e-postalarını tanımlamak ve engellemek için düzenli olarak güncellemeler sağlar.
+Microsoft Exchange Compliance Service	Exchange sunucusunda uyumluluk politikalarını uygulayan bir hizmettir. Yasal düzenlemelere uyumu izler, veri koruma önlemlerini sağlar.
+Microsoft Exchange DAG Management	Exchange sunucusunda veritabanı kullanılabilirliğini ve yedeklemeyi yöneten bir hizmettir. Database Availability Group (DAG) yapılandırmasını sağlar.
+Microsoft Exchange Mailbox Transport Delivery	Exchange sunucusunda posta kutusu taşıma işlemlerini yöneten bir hizmettir. İletileri alıcı posta kutularına teslim eder ve ileti iletim süreçlerini yönetir.
+Microsoft Exchange Diagnostics	Exchange sunucusunda hata ayıklama ve sorun giderme işlemlerini gerçekleştiren bir hizmettir. Sunucu performansını izler, sorunları tespit eder ve çözüm önerir.
+Microsoft Exchange EdgeSync	Exchange sunucuları ve Edge Transport sunucuları arasındaki senkronizasyonu sağlayan bir hizmettir. İleti iletimini düzenler ve güvenlik kontrolleri yapar.
+Microsoft Exchange Search	Exchange sunucusunda yapılan aramaları yöneten bir hizmettir. İleti ve veritabanı içeriklerindeki arama sorgularını işler ve sonuçları sağlar.
+Microsoft Exchange Frontend Transport	Exchange sunucusunda gelen ve giden iletileri yöneten bir hizmettir. İleti rutinlerini uygular, filtreleme yapar ve güvenlik önlemlerini sağlar.
+Microsoft Exchange Health Manager	Exchange sunucusunun sağlık durumunu izleyen bir hizmettir. Sunucu ve hizmetlerdeki sorunları tespit eder ve uyarılar gönderir.
+Microsoft Exchange Health Manager Recovery	Exchange sunucusunun sağlığını geri yüklemek için çalışan bir hizmettir. Sorunlar ortaya çıktığında sunucunun ve hizmetlerin sağlığını yeniden sağlar.
+Microsoft Exchange IMAP4	Exchange sunucusunda IMAP4 protokolünü destekleyen bir hizmettir. Kullanıcılara IMAP4 üzerinden e-posta erişimi sağlar.
+Microsoft Exchange IMAP4 Backend	Exchange sunucusunda IMAP4 erişimini yöneten bir hizmettir. Kullanıcılara IMAP4 protokolünü kullanarak e-postalarını senkronize etme imkanı sağlar.
+Microsoft Exchange Information Store	Exchange sunucusunda e-posta verilerini depolayan ve yöneten bir hizmettir. Kullanıcı posta kutularını, ileti veritabanlarını ve diğer Exchange verilerini saklar.
+Microsoft Exchange Mailbox Assistants	Exchange sunucusunda posta kutusu hizmetlerini yöneten bir hizmet grubudur. Görevlerin otomatik olarak yapılmasını sağlar.
+Microsoft Exchange Mailbox Replication	Exchange sunucusunda posta kutusu replikasyonunu yöneten bir hizmettir.
+
+	
+Microsoft Exchange Emergency Mitigation Service	Exchange sunucusunda acil durum önlemlerini yöneten bir hizmettir. Sistemsel hatalar, saldırılar veya diğer acil durumlarla başa çıkmak için otomatik önlemler alır.
+Microsoft Exchange POP3	Exchange sunucusunda POP3 protokolünü destekleyen bir hizmettir. Kullanıcılara POP3 üzerinden e-posta erişimi sağlar.
+Microsoft Exchange POP3 Backend	Exchange sunucusunda POP3 erişimini yöneten bir hizmettir. Kullanıcılara POP3 protokolünü kullanarak e-postalarını senkronize etme imkanı sağlar.
+Microsoft Exchange Replication	Exchange sunucusunda veritabanı replikasyonunu yöneten bir hizmettir. Veritabanlarının senkronize edilmesini ve yedeklemesini sağlar.
+Microsoft Exchange RPC Client Access	Exchange sunucusunda RPC (Remote Procedure Call) istemci erişimini sağlayan bir hizmettir. Kullanıcıların Outlook gibi istemci yazılımlarıyla Exchange sunucusuna bağlanmasını sağlar.
+Microsoft Exchange Service Host	Exchange sunucusunda diğer Exchange hizmetlerini barındıran bir hizmettir. Diğer Exchange hizmetlerinin çalışması için gereken alt yapıyı sağlar.
+Microsoft Exchange Mailbox Transport Submission	Exchange sunucusunda posta kutusu iletilerinin sunucuya teslim edilmesini sağlayan bir hizmettir. Gönderilen iletileri alıcı sunucuya ileten bir aracıdır.
+Microsoft Exchange Throttling	Exchange sunucusunda kaynak kullanımını düzenleyen bir hizmettir. Kullanıcıların sunucu kaynaklarını etkin bir şekilde paylaşmasını ve kullanmasını sağlar.
+Microsoft Exchange Transport	Exchange sunucusunda ileti akışını yöneten bir hizmettir. İletileri alıcıya iletmek için yönlendirme, filtreleme ve diğer ileti işlemlerini gerçekleştirir.
+Microsoft Exchange Transport Log Search	Exchange sunucusunda ileti akışı günlüklerinde arama yapılmasını sağlayan bir hizmettir. Belirli kriterlere göre ileti günlüklerinde arama yapılmasını sağlar.
+Tracing Service for Search in Exchange	Exchange sunucusunda arama işlemi sırasında izleme ve hata ayıklama için kullanılan bir hizmettir. Arama işlemlerinin izlenmesine ve sorun gidermeye yardımcı olur.
+Symantec Mail Security for Microsoft Exchange	Exchange sunucusunda kullanılan bir güvenlik yazılımıdır. Spam, virüs ve diğer tehditleri engelleme ve tarama işlevleri sağlar.
+Hyper-V Data Exchange Service	Exchange sunucusunun sanallaştırma ortamıyla veri alışverişini sağlayan bir hizmettir. Hyper-V ile entegrasyonu kolaylaştırır ve veri transferini optimize eder.
+Microsoft Exchange Server Extension for Windows Server Backup	Exchange sunucusu yedeklemeleri için Windows Server Backup ile entegrasyon sağlar. Yedekleme ve geri yükleme işlemlerini kolaylaştırır.
