@@ -1,0 +1,126 @@
+Exchange Full System Report
+
+"
+
+# 1. Exchange Sağlık ve Durum Raporu
+$report += "
+1. Exchange Sağlık ve Durum Raporu
+"
+$report += "
+Servis Durumları:
+"
+$report += (Get-Service | Where-Object { $_.DisplayName -like "*Exchange*" } | Select-Object DisplayName, Status | ConvertTo-Html -Fragment)
+
+$report += "
+Mailbox Database Mount Durumu:
+"
+$report += (Get-MailboxDatabase | Select-Object Name, Mounted | ConvertTo-Html -Fragment)
+
+$report += "
+Event Log Son 10 Hata:
+"
+$report += (Get-EventLog -LogName Application -Source MSExchange* -EntryType Error -Newest 10 | Select-Object TimeGenerated, Source, EventID, Message | ConvertTo-Html -Fragment)
+
+# 2. Kapasite Kullanımı ve Depolama Raporu
+$report += "
+2. Kapasite Kullanımı ve Depolama Raporu
+"
+$report += "
+Mailbox Kotaları ve Boyutları:
+"
+$report += (Get-Mailbox -ResultSize Unlimited | Get-MailboxStatistics | Select-Object DisplayName, TotalItemSize, IssueWarningQuota, ProhibitSendQuota | ConvertTo-Html -Fragment)
+
+$report += "
+Database Kullanım Durumu:
+"
+$report += (Get-MailboxDatabase | Select-Object Name, DatabaseSize, AvailableNewMailboxSpace | ConvertTo-Html -Fragment)
+
+# 3. SMTP Bağlantı ve Kuyruk Durumu Raporu
+$report += "
+3. SMTP Bağlantı ve Kuyruk Durumu Raporu
+"
+$report += "
+SMTP Kuyruk Durumu:
+"
+$report += (Get-Queue | Select-Object Identity, Status, MessageCount, NextHopDomain | ConvertTo-Html -Fragment)
+
+$report += "
+Son SMTP Hataları:
+"
+$report += (Get-MessageTrackingLog -EventId FAIL | Select-Object Timestamp, Sender, Recipients, MessageSubject, Status | ConvertTo-Html -Fragment)
+
+# 4. Olay Günlüğü (Event Log) Raporu
+$report += "
+4. Olay Günlüğü Raporu
+"
+$report += "
+Son 7 Günlük Exchange Hataları:
+"
+$report += (Get-EventLog -LogName Application -Source MSExchange* -EntryType Error -After (Get-Date).AddDays(-7) | Select-Object TimeGenerated, Source, EventID, Message | ConvertTo-Html -Fragment)
+
+# 5. E-posta Trafiği ve Dağıtım Grupları Raporu
+$report += "
+5. E-posta Trafiği ve Dağıtım Grupları Raporu
+"
+$report += "
+En Çok E-posta Gönderen ve Alan Kullanıcılar:
+"
+$report += (Get-MailTrafficReport -StartDate (Get-Date).AddDays(-30) -EndDate (Get-Date) | ConvertTo-Html -Fragment)
+
+$report += "
+Dağıtım Grupları:
+"
+$report += (Get-DistributionGroup | Select-Object Name, Members | ConvertTo-Html -Fragment)
+
+# 6. Güvenlik ve Erişim Raporu
+$report += "
+6. Güvenlik ve Erişim Raporu
+"
+$report += "
+Yetkisiz Erişim Denemeleri:
+"
+$report += (Get-EventLog -LogName Security -EntryType FailureAudit -After (Get-Date).AddDays(-7) | Select-Object TimeGenerated, EntryType, Message | ConvertTo-Html -Fragment)
+
+$report += "
+Mailbox Full Access Permissions:
+"
+$report += (Get-MailboxPermission -ResultSize Unlimited | Where-Object { $_.AccessRights -contains "FullAccess" } | ConvertTo-Html -Fragment)
+
+# 7. ActiveSync ve Mobil Cihazlar Raporu
+$report += "
+7. ActiveSync ve Mobil Cihazlar Raporu
+"
+Get-Mailbox -ResultSize Unlimited | ForEach-Object {
+    $user = $_.UserPrincipalName
+    $report += "
+Kullanıcı: $user
+"
+    $report += (Get-ActiveSyncDeviceStatistics -Mailbox $_.Identity | Select-Object DeviceID, LastSuccessSync, Status, DeviceType, DeviceUserAgent | ConvertTo-Html -Fragment)
+}
+
+# 8. Exchange Server Güncelleme ve Sürüm Uyumluluğu Raporu
+$report += "
+8. Exchange Server Güncelleme ve Sürüm Uyumluluğu Raporu
+"
+$report += "
+Sunucu Sürümleri:
+"
+$report += (Get-ExchangeServer | Select-Object Name, Edition, AdminDisplayVersion | ConvertTo-Html -Fragment)
+
+# 9. Veri Yedekleme ve Kurtarma Hazırlığı Raporu
+$report += "
+9. Veri Yedekleme ve Kurtarma Hazırlığı Raporu
+"
+$report += "
+Son Yedekleme Tarihleri:
+"
+$report += (Get-MailboxDatabase | Select-Object Name, LastBackupTime | ConvertTo-Html -Fragment)
+
+# HTML Kapanışı
+$report += ""
+
+# Raporu dosyaya kaydet
+$report -join "`n" | Set-Content -Path $outputFile
+
+# Raporu tarayıcıda aç
+Invoke-Item $outputFile
